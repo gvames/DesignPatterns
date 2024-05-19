@@ -1,0 +1,7 @@
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\bin\Debug\AbstractFactoryPattern.exe.config
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\bin\Debug\AbstractFactoryPattern.exe
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\bin\Debug\AbstractFactoryPattern.pdb
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\obj\Debug\AbstractFactoryPattern.csproj.AssemblyReference.cache
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\obj\Debug\AbstractFactoryPattern.csproj.CoreCompileInputs.cache
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\obj\Debug\AbstractFactoryPattern.exe
+C:\Users\gvames\source\repos\DesignPatterns\AbstractFactoryPattern\obj\Debug\AbstractFactoryPattern.pdb
