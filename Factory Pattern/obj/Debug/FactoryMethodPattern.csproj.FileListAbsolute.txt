@@ -1,7 +1,0 @@
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\bin\Debug\Factory Pattern.exe.config
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\bin\Debug\Factory Pattern.exe
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\bin\Debug\Factory Pattern.pdb
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\obj\Debug\FactoryMethodPattern.csproj.AssemblyReference.cache
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\obj\Debug\FactoryMethodPattern.csproj.CoreCompileInputs.cache
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\obj\Debug\Factory Pattern.exe
-C:\Users\gvames\source\repos\DesignPatterns\Factory Pattern\obj\Debug\Factory Pattern.pdb

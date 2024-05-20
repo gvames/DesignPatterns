@@ -1,7 +1,0 @@
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\bin\Debug\InterviewTestPlaytica.exe.config
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\bin\Debug\InterviewTestPlaytica.exe
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\bin\Debug\InterviewTestPlaytica.pdb
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\obj\Debug\InterviewTestPlaytica.csproj.AssemblyReference.cache
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\obj\Debug\InterviewTestPlaytica.csproj.CoreCompileInputs.cache
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\obj\Debug\InterviewTestPlaytica.exe
-C:\Users\gvames\source\repos\DesignPatterns\InterviewTestPlaytica\obj\Debug\InterviewTestPlaytica.pdb
