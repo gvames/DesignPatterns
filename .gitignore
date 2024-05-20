@@ -1,0 +1,62 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.[Cc]ache
+[Oo]bj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+*.psess
+*.vspx
+.vs/
+
+# JetBrains Rider IDE
+.idea/
+
+# Visual Studio Code IDE
+.vscode/
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+*.sass-cache
+*.favdoc
+
+#NuGet
+packages/
+*.nupkg
+
+#Test files
+*.testsettings
+
+#backup files
+[Bb]ackup*/
+[Uu]pgradeLog*.htm*
+tags
+
+#build
+*.dev1.config
+*.main1.config
+*.dev2.config
+*.live.config
+.build/output
+*.metaproj
+*.metaproj.tmp
+
+#Development
+*.InstallLog
+node_modules
