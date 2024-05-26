@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 // Diferite moduri de a aduga servicii in containerul de servicii .DOT Net
 builder.Services.AddSingleton(typeof(ServiceTest));
-builder.Services.AddSingleton(typeof(IServiceTest));
+builder.Services.AddSingleton(typeof(IServiceTest), new ServiceTest());
 builder.Services.AddSingleton(typeof(IServiceTest), typeof(ServiceTest));
 builder.Services.AddSingleton(typeof(IServiceTest), (a) => { return new ServiceTest(); });
 // ----------------------------------------------------------------------------------------

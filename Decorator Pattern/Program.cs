@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Decorator_Pattern
 {
@@ -11,9 +12,46 @@ namespace Decorator_Pattern
             /* Un decorator "ARE (has-a)" si "ESTE (is-a)" o componenta
              * Acest pattern adauga responsabilitate noua unui obiect in mod DINAMIC (la runtime)!
              * Ofera o metoda flexibila alternativa de "subclassing" pentru extinderea functionalitatii; 
-             */
-            var FinalDescription =new CeaiInCeascaAlba<IComponent>(new CeaiCuZahar<IComponent>(new Ceai()));
-            Console.WriteLine(FinalDescription.GetDescription);
+             *
+             *
+             *                       +‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾+
+             *                       | Component      |
+             *                       +________________+
+            *                        |   Operation()  |
+            *                        |                |<-----------------------+
+            *                        |                |                        |
+            *                        |                |                        |
+            *                        +________________+                        |
+            *                           ^           ^                          |
+            *                          / \         / \                         |
+            *                          ‾|‾         ‾|‾                         |
+            *                           |            ‾‾‾‾‾‾‾‾‾|                |
+            *              +‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾+       +‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾+     |
+            *              |ConcreteComponent|       |   Decorator       |     |
+            *              |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|       |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|     |
+            *              |   Operation()   |       |    Operation()    |_____|
+            *              |                 |       |                   |
+            *              +_________________+       +___________________+
+            *                                                   ^
+            *                                                  / \
+            *                                                  ‾|‾
+            *                                        +-------------------+
+            *                                        | ConcreteDecorator |
+            *                                        |                   |
+            *                                        |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
+            *                                        |  Operation()      |
+            *                                        |                   |
+            *                                        +-------------------+
+            *                                    
+            */
+
+            // Crearea unei instanțe a componentei de bază și decorarea acesteia
+            IComponent ceai = new Ceai();
+            ceai = new CeaiCuZaharDecorator(ceai);
+            ceai = new CeaiInCeascaAlbaDecorator(ceai);
+
+            Console.WriteLine(ceai.GetDescription);
+            Console.WriteLine($"Cost total: {ceai.GetCost} lei");
             Console.ReadKey();
 
         }
@@ -24,43 +62,42 @@ namespace Decorator_Pattern
             int GetCost { get; }
         }
 
-        interface IComponentDecorator<T> where T: IComponent
+        abstract class ComponentDecorator : IComponent
         {
-            T Component { get; }
+            protected IComponent _component;
+
+            public ComponentDecorator(IComponent component)
+            {
+                _component = component;
+            }
+
+            public virtual string GetDescription => _component.GetDescription;
+
+            public virtual int GetCost => _component.GetCost;
         }
 
-        class Ceai : IComponent /* Componenta */
+        class Ceai : IComponent /* Componenta de bază */
         {
             public string GetDescription => "Ceai";
             public int GetCost => 2;
         }
 
-        class CeaiCuZahar<T> : IComponent,IComponentDecorator<T> where T : IComponent
+        class CeaiCuZaharDecorator : ComponentDecorator
         {
-            public T Component { get; }
+            public CeaiCuZaharDecorator(IComponent component) : base(component) { }
 
-            public string GetDescription => Component.GetDescription + " & zahar";
+            public override string GetDescription => _component.GetDescription + " & zahar";
 
-            public int GetCost => Component.GetCost + 2;
-
-            public CeaiCuZahar(T component)
-            {
-                Component = component;
-            }            
+            public override int GetCost => _component.GetCost + 2;
         }
 
-        class CeaiInCeascaAlba<T> : IComponent, IComponentDecorator<T> where T : IComponent
+        class CeaiInCeascaAlbaDecorator : ComponentDecorator
         {
-            public T Component { get; }
+            public CeaiInCeascaAlbaDecorator(IComponent component) : base(component) { }
 
-            public string GetDescription => Component.GetDescription + " & ceasca alba";
+            public override string GetDescription => _component.GetDescription + " & ceasca alba";
 
-            public int GetCost => Component.GetCost + 1;
-
-            public CeaiInCeascaAlba(T component)
-            {
-                Component = component;
-            }
+            public override int GetCost => _component.GetCost + 1;
         }
     }
 }
