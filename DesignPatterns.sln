@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Core", ".NET Core", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_Core_Web_Api", "ASP_NET_Core_Web_Api\ASP_NET_Core_Web_Api.csproj", "{F21BB336-CC7A-4C5A-A39A-A17D1B3215E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypePattern", "PrototypePattern\PrototypePattern.csproj", "{0E83E64B-84A6-4574-86D5-506AB7446382}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{F21BB336-CC7A-4C5A-A39A-A17D1B3215E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F21BB336-CC7A-4C5A-A39A-A17D1B3215E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F21BB336-CC7A-4C5A-A39A-A17D1B3215E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E83E64B-84A6-4574-86D5-506AB7446382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E83E64B-84A6-4574-86D5-506AB7446382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E83E64B-84A6-4574-86D5-506AB7446382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E83E64B-84A6-4574-86D5-506AB7446382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{250EA7BA-7A1B-41DC-9A1E-012679291C6A} = {FF3C10B4-CB33-4EA2-AAA0-A00BC7A863B8}
 		{B6E3F91F-9FC6-42CD-8CDE-70E15ADC36E4} = {FF3C10B4-CB33-4EA2-AAA0-A00BC7A863B8}
 		{F21BB336-CC7A-4C5A-A39A-A17D1B3215E2} = {BB60544A-5F00-4075-9DE4-EB649E5239EB}
+		{0E83E64B-84A6-4574-86D5-506AB7446382} = {7676CD63-F33B-48E5-9E78-EAD6B4F583DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4ACA4186-B5FC-407D-BD5C-0FDED9DC11A2}

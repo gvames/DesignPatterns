@@ -3,57 +3,49 @@ using System.Collections.Generic;
 
 public class Game
 {
-    // Evenimente pentru adăugarea și eliminarea șobolanilor
-    public event  Action RatAdded;
-    public event Action RatRemoved;
-
-    // Metodă pentru a declanșa evenimentul RatAdded
-    public void OnRatAdded()
-    {
-        RatAdded?.Invoke();
-    }
-
-    // Metodă pentru a declanșa evenimentul RatRemoved
-    public void OnRatRemoved()
-    {
-        RatRemoved?.Invoke();
-    }
+    public Action<Rat> RatCreated;
+    public Action<Rat> RatDestroyed;
 }
 
 public class Rat : IDisposable
 {
-    readonly Game game;
+    readonly Game _game;
     public int Attack = 1;
-    private static int ratCount = 0;
+    private string Name { get; }
 
-    public Rat(Game game)
+    public Rat(Game game, string name)
     {
-        this.game = game;
-        game.RatAdded += HandleRatAdded;
-        game.RatRemoved += HandleRatRemoved;
+        _game = game;
+        Name = name;
 
-        ratCount++;
-        game.OnRatAdded();  // Anunțăm că un șobolan a fost adăugat
-        //game.RatAdded.Invoke();
-    }
+        // Subscribe to the event and increment the attack for the current rat
+        _game.RatCreated += (r) =>
+        {
+            if (r != this) // Avoid incrementing the attack of the new rat twice
+            {
+                Attack++;
+                r.Attack++;
+            };
+        };
 
-    private void HandleRatAdded()
-    {
-        Attack++;
-    }
+        // Unsubscribe from the event
+        _game.RatDestroyed += (r) =>
+        {
+            if (r != this)
+            {
+                Attack--;
+                r.Attack--;
+            }
+        };
 
-    private void HandleRatRemoved()
-    {
-        Attack--;
+
+        // Invoke the event, passing the current rat
+        _game.RatCreated?.Invoke(this);
     }
 
     public void Dispose()
     {
-        game.RatAdded -= HandleRatAdded;
-        game.RatRemoved -= HandleRatRemoved;
-
-        ratCount--;
-        game.OnRatRemoved();  // Anunțăm că un șobolan a fost eliminat
+        _game.RatDestroyed?.Invoke(this);
     }
 }
 
@@ -63,24 +55,32 @@ public class Program
     {
         var game = new Game();
 
-        var rat1 = new Rat(game);
-        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Ar trebui să fie 1
+        var rat1 = new Rat(game, "Rat1");
+        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Should be 1
         Console.WriteLine("---");
 
-        var rat2 = new Rat(game);
-        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Ar trebui să fie 2
-        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Ar trebui să fie 2
+        var rat2 = new Rat(game, "Rat2");
+        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Should be 2
+        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Should be 2
         Console.WriteLine("---");
 
-        var rat3 = new Rat(game);
-        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Ar trebui să fie 3
-        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Ar trebui să fie 3
-        Console.WriteLine($"Rat3 Attack: {rat3.Attack}");  // Ar trebui să fie 3
+        var rat3 = new Rat(game, "Rat3");
+        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Should be 3
+        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Should be 3
+        Console.WriteLine($"Rat3 Attack: {rat3.Attack}");  // Should be 3
+        Console.WriteLine("---");
+
+        var rat4 = new Rat(game, "Rat4");
+        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Should be 4
+        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Should be 4
+        Console.WriteLine($"Rat3 Attack: {rat3.Attack}");  // Should be 4
+        Console.WriteLine($"Rat4 Attack: {rat4.Attack}");  // Should be 4
         Console.WriteLine("---");
 
         rat3.Dispose();
-        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Ar trebui să fie 2
-        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Ar trebui să fie 2
+        Console.WriteLine($"Rat1 Attack: {rat1.Attack}");  // Should still be 3, since we don't decrement here
+        Console.WriteLine($"Rat2 Attack: {rat2.Attack}");  // Should still be 3, same reason
+        Console.WriteLine($"Rat4 Attack: {rat4.Attack}");  // Should still be 3, same reason
         Console.WriteLine("---");
 
         Console.ReadKey();
