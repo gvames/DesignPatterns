@@ -34,7 +34,7 @@ public class Rat : IDisposable
             if (r != this)
             {
                 Attack--;
-                r.Attack--;
+               // r.Attack--;
             }
         };
 
